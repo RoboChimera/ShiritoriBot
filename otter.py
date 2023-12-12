@@ -25,12 +25,10 @@ class MyClient(discord.Client):
 
             result = findKana(message.content);
             if (message.author != self.user) and result.endswith("ん") or result.endswith("ン"):
-                    await message.channel.send(f"You lost. You're word ended with ん ```messsage: {result}```")
-                    await message.delete()
+                await message.channel.send(message.author.mention + "が負けた,　言葉は「〜ん」で終わってるだから。<:kuso:1179019298803564628>```" + result + "```")
+                await message.delete()
 
 intents = discord.Intents.default()
 intents.message_content = True
 
 client = MyClient(intents=intents)
-
-client.run('')
